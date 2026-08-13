@@ -1,0 +1,13 @@
+<svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LessBox Logo">
+  <!-- Icon badge -->
+  <rect x="4" y="4" width="40" height="40" rx="11" fill="#065f46"/>
+  <g transform="translate(12,12)">
+    <path d="M0 4.5 8 1l8 3.5-8 3.5-8-3.5Z" fill="#fb923c"/>
+    <path d="M0 8.25 8 11.75l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M0 11.75 8 15.25l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="56" y="32" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#0f172a">Less</tspan><tspan fill="#065f46">Box</tspan>
+  </text>
+</svg>

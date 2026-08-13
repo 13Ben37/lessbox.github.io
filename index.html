@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LessBox – Weniger Material. Mehr Gewinn. Null Kompromisse.</title>
+  <meta name="description" content="LessBox: Das clevere, stapelbare Pizzabox-System für Lieferdienste. Spart bis zu 40% Pappe, Kosten und Lagerplatz. Jetzt Gratis-Musterpaket anfordern." />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Eigene Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-white text-slate-900 font-sans overflow-x-hidden antialiased">
+
+  <!-- Skip link (a11y) -->
+  <a href="#hero" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-emerald-800 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg">
+    Zum Inhalt springen
+  </a>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-lg">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Hauptnavigation">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 shrink-0" aria-label="LessBox Startseite">
+        <span aria-hidden="true" class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-800 text-white shadow-sm">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M4 8.5 12 5l8 3.5-8 3.5-8-3.5Z" fill="#fb923c"/>
+            <path d="M4 12.25 12 15.75l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 15.75 12 19.25l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="text-xl font-extrabold tracking-tight">
+          Less<span class="text-emerald-800">Box</span>
+        </span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden items-center gap-1 lg:flex">
+        <a href="#vorteile" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-800">Vorteile</a>
+        <a href="#so-funktionierts" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-800">So funktioniert's</a>
+        <a href="#rechner" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-800">Rechner</a>
+        <a href="#faq" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-emerald-800">FAQ</a>
+      </div>
+
+      <div class="hidden items-center gap-2 lg:flex">
+        <a href="#musterpaket" class="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+          <i data-lucide="package" class="h-4 w-4"></i>
+          Kostenloses Musterpaket
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" type="button"
+        class="inline-flex items-center justify-center rounded-lg p-2 text-slate-800 transition hover:bg-slate-100 lg:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-800"
+        aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <i data-lucide="menu" class="h-6 w-6" id="menu-icon-open"></i>
+        <i data-lucide="x" class="hidden h-6 w-6" id="menu-icon-close"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white lg:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
+        <a href="#vorteile" class="rounded-lg px-3 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100">Vorteile</a>
+        <a href="#so-funktionierts" class="rounded-lg px-3 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100">So funktioniert's</a>
+        <a href="#rechner" class="rounded-lg px-3 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100">Rechner</a>
+        <a href="#faq" class="rounded-lg px-3 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100">FAQ</a>
+        <a href="#musterpaket" class="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-4 py-3 text-base font-bold text-white shadow-sm transition hover:bg-orange-600">
+          <i data-lucide="package" class="h-5 w-5"></i>
+          Kostenloses Musterpaket
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="relative scroll-mt-20 overflow-hidden bg-gradient-to-b from-emerald-50/60 via-white to-white pt-24 pb-16 sm:pt-28 lg:pt-32">
+      <!-- decorative blobs -->
+      <div aria-hidden="true" class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-emerald-200/40 blur-3xl"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute top-40 -left-24 h-72 w-72 rounded-full bg-orange-200/40 blur-3xl"></div>
+
+      <div class="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-8">
+        <!-- Copy -->
+        <div class="animate-fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-800">
+            <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+            Nachhaltige Verpackungsinnovation
+          </span>
+          <h1 class="mt-5 text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+            LessBox – Weniger Material. <span class="text-emerald-800">Mehr Gewinn.</span> <span class="text-orange-500">Null Kompromisse.</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+            Das clevere Stapelsystem für Pizzalieferanten. Der Boden der oberen Box schützt die untere Pizza –
+            spart bis zu <strong class="font-semibold text-slate-900">40% Pappe, Kosten und Lagerplatz</strong>.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#musterpaket" class="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+              <i data-lucide="package" class="h-5 w-5"></i>
+              Gratis Musterpaket anfordern
+            </a>
+            <a href="#rechner" class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-800 bg-white px-6 py-3.5 text-base font-bold text-emerald-800 transition hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-800">
+              <i data-lucide="calculator" class="h-5 w-5"></i>
+              Ersparnis berechnen
+            </a>
+          </div>
+
+          <!-- trust row -->
+          <dl class="mt-10 grid max-w-md grid-cols-3 gap-4">
+            <div>
+              <dt class="text-2xl font-extrabold text-emerald-800 sm:text-3xl">40%</dt>
+              <dd class="text-xs font-medium text-slate-500">weniger Pappe</dd>
+            </div>
+            <div>
+              <dt class="text-2xl font-extrabold text-emerald-800 sm:text-3xl">50%</dt>
+              <dd class="text-xs font-medium text-slate-500">weniger Lager</dd>
+            </div>
+            <div>
+              <dt class="text-2xl font-extrabold text-emerald-800 sm:text-3xl">100%</dt>
+              <dd class="text-xs font-medium text-slate-500">lebensmittelecht</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Hero illustration: stacked boxes -->
+        <div class="relative flex items-center justify-center py-6 lg:py-0">
+          <div class="relative w-full max-w-md animate-float">
+            <!-- Badge callouts -->
+            <div class="absolute -left-2 top-4 z-20 rotate-[-6deg] rounded-xl bg-emerald-800 px-3 py-2 text-xs font-bold text-white shadow-xl sm:-left-4">
+              <span class="flex items-center gap-1.5"><i data-lucide="recycle" class="h-4 w-4"></i>40% weniger Müll</span>
+            </div>
+            <div class="absolute -right-2 bottom-10 z-20 rotate-[5deg] rounded-xl bg-orange-500 px-3 py-2 text-xs font-bold text-white shadow-xl sm:-right-4">
+              <span class="flex items-center gap-1.5"><i data-lucide="badge-check" class="h-4 w-4"></i>100% Lebensmittelecht</span>
+            </div>
+
+            <!-- Stacked boxes SVG -->
+            <svg viewBox="0 0 400 380" class="h-auto w-full drop-shadow-2xl" role="img" aria-label="Illustration von drei gestapelten LessBox-Pizzakartons: die unteren beiden ohne Deckel, nur die oberste Box hat einen schützenden Top-Deckel.">
+              <defs>
+                <linearGradient id="cardTop" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f5deb8"/>
+                  <stop offset="1" stop-color="#e7c48f"/>
+                </linearGradient>
+                <linearGradient id="cardFront" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#e0b579"/>
+                  <stop offset="1" stop-color="#cf9d5c"/>
+                </linearGradient>
+                <linearGradient id="cardSide" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#c99a58"/>
+                  <stop offset="1" stop-color="#b5843f"/>
+                </linearGradient>
+                <radialGradient id="pizza" cx="0.5" cy="0.4" r="0.7">
+                  <stop offset="0" stop-color="#ffd98a"/>
+                  <stop offset="1" stop-color="#e8a94b"/>
+                </radialGradient>
+              </defs>
+
+              <!-- shadow -->
+              <ellipse cx="200" cy="352" rx="150" ry="20" fill="#0f172a" opacity="0.10"/>
+
+              <!-- ===== BOX 1 (bottom, no lid) ===== -->
+              <g>
+                <polygon points="60,300 200,340 200,300 60,260" fill="url(#cardSide)"/>
+                <polygon points="200,300 340,260 340,300 200,340" fill="url(#cardFront)"/>
+                <polygon points="60,260 200,300 340,260 200,220" fill="url(#cardTop)"/>
+                <!-- pizza inside -->
+                <ellipse cx="200" cy="260" rx="88" ry="30" fill="url(#pizza)"/>
+                <circle cx="175" cy="252" r="6" fill="#c0392b"/><circle cx="215" cy="268" r="6" fill="#c0392b"/>
+                <circle cx="228" cy="250" r="5" fill="#c0392b"/><circle cx="185" cy="270" r="5" fill="#c0392b"/>
+              </g>
+
+              <!-- ===== BOX 2 (middle, no lid — bottom of box acts as lid for box 1) ===== -->
+              <g>
+                <polygon points="60,220 200,260 200,220 60,180" fill="url(#cardSide)"/>
+                <polygon points="200,220 340,180 340,220 200,260" fill="url(#cardFront)"/>
+                <polygon points="60,180 200,220 340,180 200,140" fill="url(#cardTop)"/>
+                <ellipse cx="200" cy="180" rx="88" ry="30" fill="url(#pizza)"/>
+                <circle cx="175" cy="172" r="6" fill="#c0392b"/><circle cx="215" cy="188" r="6" fill="#c0392b"/>
+                <circle cx="228" cy="170" r="5" fill="#c0392b"/><circle cx="185" cy="190" r="5" fill="#c0392b"/>
+              </g>
+
+              <!-- ===== BOX 3 (top, WITH protective top lid) ===== -->
+              <g>
+                <polygon points="60,140 200,180 200,140 60,100" fill="url(#cardSide)"/>
+                <polygon points="200,140 340,100 340,140 200,180" fill="url(#cardFront)"/>
+                <!-- protective TOP lid (highlighted) -->
+                <polygon points="60,100 200,140 340,100 200,60" fill="#059669"/>
+                <polygon points="60,100 200,140 340,100 200,60" fill="#ffffff" opacity="0.08"/>
+                <polyline points="60,100 200,140 340,100" fill="none" stroke="#065f46" stroke-width="2"/>
+                <!-- lid label -->
+                <g transform="translate(200,100)">
+                  <circle r="17" fill="#ffffff"/>
+                  <path d="M-7 0 l5 5 l9 -10" fill="none" stroke="#059669" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </g>
+            </svg>
+
+            <!-- caption chips -->
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-800">
+                <i data-lucide="check" class="h-3.5 w-3.5"></i> Nur die oberste Box braucht einen Deckel
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VALUE PROPOSITION ============ -->
+    <section id="vorteile" class="scroll-mt-20 bg-white py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-bold uppercase tracking-wider text-orange-500">Ihre Vorteile</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Drei Gründe, warum sich LessBox rechnet
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Weniger Material, weniger Kosten, weniger Lageraufwand – ohne Kompromisse bei Qualität und Hygiene.
+          </p>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="group rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl">
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-emerald-800 text-white shadow-md">
+              <i data-lucide="coins" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">Kosten nachhaltig senken</h3>
+            <p class="mt-3 text-slate-600">
+              Weniger Materialaufwand bedeutet spürbar günstigere Stückpreise im Einkauf.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="group rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl">
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-emerald-800 text-white shadow-md">
+              <i data-lucide="leaf" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">40% Müll reduzieren</h3>
+            <p class="mt-3 text-slate-600">
+              Starke Umweltbilanz für Ihre Pizzeria und ein klares Signal an Ihre Kunden.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="group rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-sm transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl">
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-emerald-800 text-white shadow-md">
+              <i data-lucide="box" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">50% weniger Lagerplatz</h3>
+            <p class="mt-3 text-slate-600">
+              Mehr Bewegungsfreiheit in der Küche und im Lieferfahrzeug durch reduzierte Stapelhöhe.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="so-funktionierts" class="scroll-mt-20 bg-emerald-50/40 py-20 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-bold uppercase tracking-wider text-orange-500">So funktioniert's</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            In drei Schritten liefer­bereit
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Das geniale Prinzip: Der Boden der oberen Box verschließt die Pizza darunter.
+          </p>
+        </div>
+
+        <ol class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <!-- Step 1 -->
+          <li class="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <span class="absolute right-6 top-6 text-5xl font-extrabold text-emerald-100">1</span>
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-orange-500 text-white shadow-md">
+              <i data-lucide="pizza" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">Befüllen</h3>
+            <p class="mt-3 text-slate-600">Frisch gebackene Pizza in die LessBox-Basis legen.</p>
+          </li>
+
+          <!-- Step 2 -->
+          <li class="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <span class="absolute right-6 top-6 text-5xl font-extrabold text-emerald-100">2</span>
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-orange-500 text-white shadow-md">
+              <i data-lucide="layers" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">Stapeln</h3>
+            <p class="mt-3 text-slate-600">Nächste Box daraufstellen. Der Kartonboden verschließt die Pizza darunter passgenau.</p>
+          </li>
+
+          <!-- Step 3 -->
+          <li class="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <span class="absolute right-6 top-6 text-5xl font-extrabold text-emerald-100">3</span>
+            <div class="grid h-14 w-14 place-items-center rounded-xl bg-orange-500 text-white shadow-md">
+              <i data-lucide="shield-check" class="h-7 w-7"></i>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-slate-900">Top-Deckel aufsetzen</h3>
+            <p class="mt-3 text-slate-600">Nur die oberste Pizza erhält den schützenden LessBox-Topdeckel. Ready for delivery!</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CALCULATOR ============ -->
+    <section id="rechner" class="scroll-mt-20 bg-white py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-bold uppercase tracking-wider text-orange-500">Ersparnis-Rechner</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Berechnen Sie Ihr Sparpotenzial
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Bewegen Sie den Regler und sehen Sie in Echtzeit, wie viel LessBox Ihnen jährlich spart.
+          </p>
+        </div>
+
+        <div class="mt-12 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-lg">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Slider side -->
+            <div class="border-b border-slate-200 p-8 sm:p-10 lg:border-b-0 lg:border-r">
+              <label for="pizza-slider" class="block text-base font-bold text-slate-900">
+                Anzahl gelieferter Pizzen pro Monat
+              </label>
+              <div class="mt-4 flex items-end gap-2">
+                <span id="slider-value" class="text-4xl font-extrabold text-emerald-800">5.000</span>
+                <span class="mb-1 text-sm font-medium text-slate-500">Pizzen / Monat</span>
+              </div>
+
+              <input type="range" id="pizza-slider" class="lb-range mt-6 w-full"
+                min="1000" max="25000" step="500" value="5000"
+                aria-describedby="slider-hint" />
+              <div class="mt-2 flex justify-between text-xs font-medium text-slate-400">
+                <span>1.000</span>
+                <span>25.000</span>
+              </div>
+              <p id="slider-hint" class="mt-4 flex items-start gap-2 text-sm text-slate-500">
+                <i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0 text-emerald-700"></i>
+                Basis: rund 40% weniger Pappe pro gestapelter Box gegenüber klassischen Pizzakartons.
+              </p>
+            </div>
+
+            <!-- Results side -->
+            <div class="grid grid-cols-1 gap-4 p-8 sm:grid-cols-1 sm:p-10">
+              <div class="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-amber-100 text-amber-700">
+                  <i data-lucide="weight" class="h-6 w-6"></i>
+                </div>
+                <div>
+                  <div id="result-material" class="text-2xl font-extrabold text-slate-900">0 kg</div>
+                  <div class="text-sm text-slate-500">Eingespartes Material / Jahr</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-emerald-100 text-emerald-700">
+                  <i data-lucide="euro" class="h-6 w-6"></i>
+                </div>
+                <div>
+                  <div id="result-money" class="text-2xl font-extrabold text-emerald-800">0 €</div>
+                  <div class="text-sm text-slate-500">Geschätzte Ersparnis / Jahr</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-green-100 text-green-700">
+                  <i data-lucide="cloud" class="h-6 w-6"></i>
+                </div>
+                <div>
+                  <div id="result-co2" class="text-2xl font-extrabold text-slate-900">0 kg</div>
+                  <div class="text-sm text-slate-500">Geschätzte CO₂-Einsparung / Jahr</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA strip -->
+          <div class="flex flex-col items-center justify-between gap-4 border-t border-slate-200 bg-emerald-800 px-8 py-6 sm:flex-row sm:px-10">
+            <p class="text-center text-sm font-medium text-emerald-50 sm:text-left">
+              Überzeugt? Testen Sie LessBox jetzt kostenlos in Ihrem Betrieb.
+            </p>
+            <a href="#musterpaket" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <i data-lucide="package" class="h-4 w-4"></i>
+              Gratis Musterpaket
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="scroll-mt-20 bg-slate-50 py-20 sm:py-24">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="text-sm font-bold uppercase tracking-wider text-orange-500">FAQ</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            Häufig gestellte Fragen
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">Alles, was Sie über LessBox wissen müssen.</p>
+        </div>
+
+        <div class="mt-12 space-y-4" id="faq-list">
+          <!-- FAQ Item -->
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <h3>
+              <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-emerald-800"
+                aria-expanded="false" aria-controls="faq-answer-1" id="faq-btn-1">
+                <span class="text-base font-bold text-slate-900 sm:text-lg">Halten die Pizzen in LessBox-Kartons genauso warm?</span>
+                <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-emerald-800 transition-transform duration-300"></i>
+              </button>
+            </h3>
+            <div id="faq-answer-1" role="region" aria-labelledby="faq-btn-1" class="lb-answer">
+              <div>
+                <p class="px-6 pb-5 text-slate-600">
+                  Ja, das stapelbündige System schließt dicht ab und hält die Wärme optimal.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <h3>
+              <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-emerald-800"
+                aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
+                <span class="text-base font-bold text-slate-900 sm:text-lg">Wie sieht es mit der Hygiene beim Stapeln aus?</span>
+                <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-emerald-800 transition-transform duration-300"></i>
+              </button>
+            </h3>
+            <div id="faq-answer-2" role="region" aria-labelledby="faq-btn-2" class="lb-answer">
+              <div>
+                <p class="px-6 pb-5 text-slate-600">
+                  Der Außenboden der oberen Box kommt nicht mit der unteren Pizza in Berührung; 100% lebensmittelecht zertifiziert.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <h3>
+              <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-emerald-800"
+                aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
+                <span class="text-base font-bold text-slate-900 sm:text-lg">Welche Größen sind für LessBox verfügbar?</span>
+                <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-emerald-800 transition-transform duration-300"></i>
+              </button>
+            </h3>
+            <div id="faq-answer-3" role="region" aria-labelledby="faq-btn-3" class="lb-answer">
+              <div>
+                <p class="px-6 pb-5 text-slate-600">
+                  Standardmäßig 26cm, 28cm, 32cm und Familienformat.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <h3>
+              <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-emerald-800"
+                aria-expanded="false" aria-controls="faq-answer-4" id="faq-btn-4">
+                <span class="text-base font-bold text-slate-900 sm:text-lg">Ist LessBox in Deutschland rechtlich zugelassen?</span>
+                <i data-lucide="chevron-down" class="faq-chevron h-5 w-5 shrink-0 text-emerald-800 transition-transform duration-300"></i>
+              </button>
+            </h3>
+            <div id="faq-answer-4" role="region" aria-labelledby="faq-btn-4" class="lb-answer">
+              <div>
+                <p class="px-6 pb-5 text-slate-600">
+                  Ja, erfüllt alle EU- und DE-Vorschriften für Lebensmittelverpackungen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SAMPLE ORDER FORM ============ -->
+    <section id="musterpaket" class="scroll-mt-20 bg-gradient-to-b from-white to-emerald-50/50 py-20 sm:py-24">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-8">
+          <!-- Left copy -->
+          <div class="lg:col-span-2">
+            <span class="text-sm font-bold uppercase tracking-wider text-orange-500">Gratis testen</span>
+            <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              Jetzt LessBox testen: Gratis Musterpaket anfordern
+            </h2>
+            <p class="mt-4 text-lg text-slate-600">
+              Überzeugen Sie sich selbst. Wir senden Ihnen kostenlos und unverbindlich ein Musterpaket in Ihre gewünschten Größen.
+            </p>
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-center gap-3 text-slate-700">
+                <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-100 text-emerald-700"><i data-lucide="check" class="h-4 w-4"></i></span>
+                100% kostenlos & unverbindlich
+              </li>
+              <li class="flex items-center gap-3 text-slate-700">
+                <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-100 text-emerald-700"><i data-lucide="truck" class="h-4 w-4"></i></span>
+                Versand innerhalb von 3 Werktagen
+              </li>
+              <li class="flex items-center gap-3 text-slate-700">
+                <span class="grid h-6 w-6 place-items-center rounded-full bg-emerald-100 text-emerald-700"><i data-lucide="phone" class="h-4 w-4"></i></span>
+                Persönliche Beratung inklusive
+              </li>
+            </ul>
+          </div>
+
+          <!-- Form -->
+          <div class="lg:col-span-3">
+            <form id="sample-form" novalidate class="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+              <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-1">
+                  <label for="f-name" class="mb-1.5 block text-sm font-semibold text-slate-800">Name <span class="text-orange-500">*</span></label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="Max Mustermann" aria-describedby="err-name" />
+                  <p id="err-name" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <div class="sm:col-span-1">
+                  <label for="f-company" class="mb-1.5 block text-sm font-semibold text-slate-800">Pizzeria / Betrieb <span class="text-orange-500">*</span></label>
+                  <input id="f-company" name="company" type="text" autocomplete="organization" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="Pizzeria Bella Napoli" aria-describedby="err-company" />
+                  <p id="err-company" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="f-street" class="mb-1.5 block text-sm font-semibold text-slate-800">Straße & Hausnummer <span class="text-orange-500">*</span></label>
+                  <input id="f-street" name="street" type="text" autocomplete="street-address" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="Musterstraße 12" aria-describedby="err-street" />
+                  <p id="err-street" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="f-city" class="mb-1.5 block text-sm font-semibold text-slate-800">PLZ & Ort <span class="text-orange-500">*</span></label>
+                  <input id="f-city" name="city" type="text" autocomplete="address-level2" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="10115 Berlin" aria-describedby="err-city" />
+                  <p id="err-city" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <div class="sm:col-span-1">
+                  <label for="f-email" class="mb-1.5 block text-sm font-semibold text-slate-800">E-Mail <span class="text-orange-500">*</span></label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="max@bella-napoli.de" aria-describedby="err-email" />
+                  <p id="err-email" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <div class="sm:col-span-1">
+                  <label for="f-phone" class="mb-1.5 block text-sm font-semibold text-slate-800">Telefonnummer <span class="text-orange-500">*</span></label>
+                  <input id="f-phone" name="phone" type="tel" autocomplete="tel" required
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                    placeholder="+49 30 1234567" aria-describedby="err-phone" />
+                  <p id="err-phone" class="mt-1 hidden text-sm font-medium text-red-600"></p>
+                </div>
+
+                <!-- Sizes -->
+                <fieldset class="sm:col-span-2">
+                  <legend class="mb-2 text-sm font-semibold text-slate-800">Gewünschte Größen <span class="text-orange-500">*</span></legend>
+                  <div class="flex flex-wrap gap-3">
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50">
+                      <input type="checkbox" name="sizes" value="26cm" class="size-checkbox h-4 w-4 rounded border-slate-300 text-emerald-700 focus:ring-emerald-600" />
+                      26 cm
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50">
+                      <input type="checkbox" name="sizes" value="28cm" class="size-checkbox h-4 w-4 rounded border-slate-300 text-emerald-700 focus:ring-emerald-600" />
+                      28 cm
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-emerald-500 has-[:checked]:border-emerald-600 has-[:checked]:bg-emerald-50">
+                      <input type="checkbox" name="sizes" value="32cm" class="size-checkbox h-4 w-4 rounded border-slate-300 text-emerald-700 focus:ring-emerald-600" />
+                      32 cm
+                    </label>
+                  </div>
+                  <p id="err-sizes" class="mt-2 hidden text-sm font-medium text-red-600"></p>
+                </fieldset>
+              </div>
+
+              <button type="submit"
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+                <i data-lucide="send" class="h-5 w-5"></i>
+                Gratis Musterpaket anfordern
+              </button>
+
+              <p class="mt-3 text-center text-xs text-slate-500">
+                Mit dem Absenden stimmen Sie unserer <a href="#" class="underline hover:text-emerald-800">Datenschutzerklärung</a> zu.
+              </p>
+
+              <!-- Success message -->
+              <div id="form-success" role="status" aria-live="polite"
+                class="mt-6 hidden items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
+                  <i data-lucide="check" class="h-5 w-5"></i>
+                </span>
+                <div>
+                  <p class="font-bold text-emerald-900">Vielen Dank! Ihre Anfrage ist eingegangen.</p>
+                  <p class="mt-1 text-sm text-emerald-800" id="success-detail">Wir senden Ihr Gratis-Musterpaket in Kürze los.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-slate-900 text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+      <div class="flex flex-col items-start justify-between gap-10 md:flex-row">
+        <div class="max-w-sm">
+          <a href="#hero" class="flex items-center gap-2.5" aria-label="LessBox Startseite">
+            <span aria-hidden="true" class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-700 text-white">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 8.5 12 5l8 3.5-8 3.5-8-3.5Z" fill="#fb923c"/>
+                <path d="M4 12.25 12 15.75l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 15.75 12 19.25l8-3.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="text-xl font-extrabold tracking-tight text-white">Less<span class="text-emerald-400">Box</span></span>
+          </a>
+          <p class="mt-4 text-sm leading-relaxed text-slate-400">
+            Weniger Material. Mehr Gewinn. Null Kompromisse. Das stapelbare, lidlose Pizzabox-System für moderne Lieferdienste.
+          </p>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-x-12 gap-y-3 sm:grid-cols-2" aria-label="Footer">
+          <div class="flex flex-col gap-3">
+            <span class="text-sm font-bold uppercase tracking-wider text-slate-500">Rechtliches</span>
+            <a href="impressum.html" class="text-sm text-slate-400 transition hover:text-white">Impressum</a>
+            <a href="datenschutz.html" class="text-sm text-slate-400 transition hover:text-white">Datenschutz</a>
+            <a href="#" class="text-sm text-slate-400 transition hover:text-white">AGB</a>
+          </div>
+          <div class="flex flex-col gap-3">
+            <span class="text-sm font-bold uppercase tracking-wider text-slate-500">Navigation</span>
+            <a href="#vorteile" class="text-sm text-slate-400 transition hover:text-white">Vorteile</a>
+            <a href="#rechner" class="text-sm text-slate-400 transition hover:text-white">Rechner</a>
+            <a href="#musterpaket" class="text-sm text-slate-400 transition hover:text-white">Musterpaket</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="mt-12 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+        © 2026 LessBox. Alle Rechte vorbehalten.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script src="script.js" defer></script>
+</body>
+</html>
