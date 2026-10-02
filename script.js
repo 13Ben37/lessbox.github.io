@@ -113,6 +113,7 @@
 
   if (form) {
     var success = document.getElementById('form-success');
+    var successTitle = document.getElementById('success-title');
     var successDetail = document.getElementById('success-detail');
     var formError = document.getElementById('form-error');
     var submitBtn = document.getElementById('form-submit');
@@ -127,11 +128,46 @@
     };
 
     var showSuccess = function (firstName, sizes) {
+      if (successTitle) successTitle.textContent = 'Vielen Dank! Ihre Anfrage ist eingegangen.';
       if (successDetail) {
         successDetail.textContent = 'Wir senden Ihr Gratis-Musterpaket (' + sizes.join(', ') + ') in Kürze los'
           + (firstName ? ', ' + firstName + '.' : '.');
       }
       form.reset();
+      if (formError) {
+        formError.classList.add('hidden');
+        formError.classList.remove('flex');
+      }
+      if (success) {
+        success.classList.remove('hidden');
+        success.classList.add('flex');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      renderIcons();
+    };
+
+    var openMailDraft = function (details) {
+      var body = [
+        'Name: ' + details.fullName,
+        'Pizzeria / Betrieb: ' + details.company,
+        'Straße und Hausnummer: ' + details.street,
+        'PLZ und Ort: ' + details.city,
+        'E-Mail: ' + details.email,
+        'Telefon: ' + details.phone,
+        'Gewünschte Größen: ' + details.sizes.join(', ')
+      ].join('\r\n');
+      window.location.href = 'mailto:anfrage@lessbox.de?subject='
+        + encodeURIComponent('Neue Musterpaket-Anfrage – ' + details.company)
+        + '&body=' + encodeURIComponent(body);
+    };
+
+    var showMailDraft = function (firstName, sizes) {
+      if (successTitle) successTitle.textContent = 'Bitte senden Sie die E-Mail jetzt ab.';
+      if (successDetail) {
+        successDetail.textContent = 'Ihr E-Mail-Programm wurde mit der Anfrage'
+          + (firstName ? ' von ' + firstName : '')
+          + ' (' + sizes.join(', ') + ') geöffnet. Die Nachricht kommt erst an, wenn Sie sie an anfrage@lessbox.de absenden.';
+      }
       if (formError) {
         formError.classList.add('hidden');
         formError.classList.remove('flex');
@@ -220,10 +256,19 @@
       var city = document.getElementById('f-city').value.trim();
       var email = document.getElementById('f-email').value.trim();
       var phone = document.getElementById('f-phone').value.trim();
-      var honey = document.getElementById('f-honey');
+      var details = {
+        fullName: fullName,
+        company: company,
+        street: street,
+        city: city,
+        email: email,
+        phone: phone,
+        sizes: checkedSizes
+      };
 
-      if (honey && honey.value) {
-        showSuccess(firstName, checkedSizes);
+      if (window.location.protocol === 'file:') {
+        openMailDraft(details);
+        showMailDraft(firstName, checkedSizes);
         return;
       }
 
@@ -233,7 +278,7 @@
         formError.classList.remove('flex');
       }
 
-      fetch('https://formsubmit.co/ajax/info@lessbox.de', {
+      fetch('https://formsubmit.co/ajax/anfrage@lessbox.de', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -244,6 +289,7 @@
           _template: 'table',
           _captcha: 'false',
           _replyto: email,
+          email: email,
           Name: fullName,
           'Pizzeria / Betrieb': company,
           'Straße und Hausnummer': street,
@@ -259,12 +305,16 @@
         })
         .then(function (data) {
           var accepted = data && (data.success === true || data.success === 'true');
-          var pendingActivation = data && typeof data.message === 'string' && data.message.indexOf('Activation') !== -1;
-          if (!accepted && !pendingActivation) throw new Error('send failed');
+          if (!accepted) {
+            openMailDraft(details);
+            showMailDraft(firstName, checkedSizes);
+            return;
+          }
           showSuccess(firstName, checkedSizes);
         })
         .catch(function () {
-          showSendError();
+          openMailDraft(details);
+          showMailDraft(firstName, checkedSizes);
         })
         .then(function () {
           setSending(false);
