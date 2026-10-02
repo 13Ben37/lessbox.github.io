@@ -114,6 +114,47 @@
   if (form) {
     var success = document.getElementById('form-success');
     var successDetail = document.getElementById('success-detail');
+    var formError = document.getElementById('form-error');
+    var submitBtn = document.getElementById('form-submit');
+    var submitLabel = document.getElementById('form-submit-label');
+
+    var setSending = function (sending) {
+      if (submitBtn) {
+        submitBtn.disabled = sending;
+        submitBtn.setAttribute('aria-busy', sending ? 'true' : 'false');
+      }
+      if (submitLabel) submitLabel.textContent = sending ? 'Wird gesendet …' : 'Gratis Musterpaket anfordern';
+    };
+
+    var showSuccess = function (firstName, sizes) {
+      if (successDetail) {
+        successDetail.textContent = 'Wir senden Ihr Gratis-Musterpaket (' + sizes.join(', ') + ') in Kürze los'
+          + (firstName ? ', ' + firstName + '.' : '.');
+      }
+      form.reset();
+      if (formError) {
+        formError.classList.add('hidden');
+        formError.classList.remove('flex');
+      }
+      if (success) {
+        success.classList.remove('hidden');
+        success.classList.add('flex');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      renderIcons();
+    };
+
+    var showSendError = function () {
+      if (success) {
+        success.classList.add('hidden');
+        success.classList.remove('flex');
+      }
+      if (formError) {
+        formError.classList.remove('hidden');
+        formError.classList.add('flex');
+        formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    };
 
     var showError = function (id, msg) {
       var el = document.getElementById('err-' + id);
@@ -172,19 +213,62 @@
         return;
       }
 
-      // Success
-      var name = document.getElementById('f-name').value.trim().split(' ')[0];
-      if (successDetail) {
-        successDetail.textContent = 'Wir senden Ihr Gratis-Musterpaket (' + checkedSizes.join(', ') + ') in Kürze los'
-          + (name ? ', ' + name + '.' : '.');
+      var fullName = document.getElementById('f-name').value.trim();
+      var firstName = fullName.split(' ')[0];
+      var company = document.getElementById('f-company').value.trim();
+      var street = document.getElementById('f-street').value.trim();
+      var city = document.getElementById('f-city').value.trim();
+      var email = document.getElementById('f-email').value.trim();
+      var phone = document.getElementById('f-phone').value.trim();
+      var honey = document.getElementById('f-honey');
+
+      if (honey && honey.value) {
+        showSuccess(firstName, checkedSizes);
+        return;
       }
-      form.reset();
-      if (success) {
-        success.classList.remove('hidden');
-        success.classList.add('flex');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      setSending(true);
+      if (formError) {
+        formError.classList.add('hidden');
+        formError.classList.remove('flex');
       }
-      renderIcons();
+
+      fetch('https://formsubmit.co/ajax/info@lessbox.de', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: 'Neue Musterpaket-Anfrage – ' + company,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: email,
+          Name: fullName,
+          'Pizzeria / Betrieb': company,
+          'Straße und Hausnummer': street,
+          'PLZ und Ort': city,
+          'E-Mail': email,
+          Telefon: phone,
+          'Gewünschte Größen': checkedSizes.join(', ')
+        })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('send failed');
+          return res.json();
+        })
+        .then(function (data) {
+          var accepted = data && (data.success === true || data.success === 'true');
+          var pendingActivation = data && typeof data.message === 'string' && data.message.indexOf('Activation') !== -1;
+          if (!accepted && !pendingActivation) throw new Error('send failed');
+          showSuccess(firstName, checkedSizes);
+        })
+        .catch(function () {
+          showSendError();
+        })
+        .then(function () {
+          setSending(false);
+        });
     });
 
     // Clear field errors on input

@@ -535,7 +535,7 @@
                   <label for="f-name" class="mb-1.5 block text-sm font-semibold text-slate-800">Name <span class="text-orange-500">*</span></label>
                   <input id="f-name" name="name" type="text" autocomplete="name" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="Max Mustermann" aria-describedby="err-name" />
+                    aria-describedby="err-name" />
                   <p id="err-name" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -543,7 +543,7 @@
                   <label for="f-company" class="mb-1.5 block text-sm font-semibold text-slate-800">Pizzeria / Betrieb <span class="text-orange-500">*</span></label>
                   <input id="f-company" name="company" type="text" autocomplete="organization" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="Pizzeria Bella Napoli" aria-describedby="err-company" />
+                    aria-describedby="err-company" />
                   <p id="err-company" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -551,7 +551,7 @@
                   <label for="f-street" class="mb-1.5 block text-sm font-semibold text-slate-800">Straße & Hausnummer <span class="text-orange-500">*</span></label>
                   <input id="f-street" name="street" type="text" autocomplete="street-address" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="Musterstraße 12" aria-describedby="err-street" />
+                    aria-describedby="err-street" />
                   <p id="err-street" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -559,7 +559,7 @@
                   <label for="f-city" class="mb-1.5 block text-sm font-semibold text-slate-800">PLZ & Ort <span class="text-orange-500">*</span></label>
                   <input id="f-city" name="city" type="text" autocomplete="address-level2" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="10115 Berlin" aria-describedby="err-city" />
+                    aria-describedby="err-city" />
                   <p id="err-city" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -567,7 +567,7 @@
                   <label for="f-email" class="mb-1.5 block text-sm font-semibold text-slate-800">E-Mail <span class="text-orange-500">*</span></label>
                   <input id="f-email" name="email" type="email" autocomplete="email" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="max@bella-napoli.de" aria-describedby="err-email" />
+                    aria-describedby="err-email" />
                   <p id="err-email" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -575,7 +575,7 @@
                   <label for="f-phone" class="mb-1.5 block text-sm font-semibold text-slate-800">Telefonnummer <span class="text-orange-500">*</span></label>
                   <input id="f-phone" name="phone" type="tel" autocomplete="tel" required
                     class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-slate-900 placeholder-slate-400 transition focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
-                    placeholder="+49 30 1234567" aria-describedby="err-phone" />
+                    aria-describedby="err-phone" />
                   <p id="err-phone" class="mt-1 hidden text-sm font-medium text-red-600"></p>
                 </div>
 
@@ -600,17 +600,20 @@
                 </fieldset>
               </div>
 
-              <button type="submit"
-                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+              <input type="text" id="f-honey" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" id="form-submit"
+                class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 disabled:cursor-not-allowed disabled:opacity-60">
                 <i data-lucide="send" class="h-5 w-5"></i>
-                Gratis Musterpaket anfordern
+                <span id="form-submit-label">Gratis Musterpaket anfordern</span>
               </button>
 
               <p class="mt-3 text-center text-xs text-slate-500">
                 Mit dem Absenden stimmen Sie unserer <a href="#" class="underline hover:text-emerald-800">Datenschutzerklärung</a> zu.
               </p>
 
-              <!-- Success message -->
+              <div id="form-error" role="alert" class="mt-6 hidden items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-5">
+                <p class="text-sm font-medium text-red-800">Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an <a href="mailto:info@lessbox.de" class="underline">info@lessbox.de</a>.</p>
+              </div>
               <div id="form-success" role="status" aria-live="polite"
                 class="mt-6 hidden items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
                 <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
@@ -665,7 +668,7 @@
       </div>
 
       <div class="mt-12 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
-        © 2026 LessBox. Alle Rechte vorbehalten.
+        © 2026 LessBox UG (haftungsbeschränkt). Alle Rechte vorbehalten.
       </div>
     </div>
   </footer>
